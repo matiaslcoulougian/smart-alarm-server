@@ -10,10 +10,13 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Alarm {
-  id    Int     @default(autoincrement()) @id
-  sound String
+model alarm {
+  id    String  @id @default(uuid())
+  days Json
   time DateTime
   createdAt  DateTime
+  isActive Boolean
+  deviceId String
+  name String
 }
 

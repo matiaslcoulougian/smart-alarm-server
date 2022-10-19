@@ -1,12 +1,16 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
 import { AppService } from './app.service';
+import { CreateAlarmDto } from './dto/CreateAlarm.dto';
+import { CreateAlarmResponseDto } from './dto/CreateAlarmResponse.dto';
 
-@Controller()
+@Controller('alarm')
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  @Post()
+  async createAlarm(
+    @Body() alarm: CreateAlarmDto,
+  ): Promise<CreateAlarmResponseDto> {
+    return await this.appService.createAlarm(alarm);
   }
 }
