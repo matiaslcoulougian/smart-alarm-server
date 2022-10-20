@@ -14,8 +14,8 @@ model alarm {
   id    String  @id @default(uuid())
   days Json
   time DateTime
-  createdAt  DateTime
-  isActive Boolean
+  createdAt  DateTime @default(now())
+  isActive Boolean @default(true)
   deviceId String
   name String
 }

@@ -19,10 +19,4 @@ export class CreateAlarmDto {
 
   @IsNotEmpty()
   deviceId: string;
-
-  @IsEmpty()
-  isActive: boolean;
-
-  @IsEmpty()
-  createdAt: Date;
 }
