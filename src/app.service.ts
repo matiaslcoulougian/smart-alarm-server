@@ -4,6 +4,7 @@ import { CreateAlarmResponseDto } from './dto/CreateAlarmResponse.dto';
 import { AppRepository } from './app.repository';
 import { client } from "./main";
 import {RecurrenceRule, scheduleJob, Range} from "node-schedule";
+import { Alarm } from "./entity/alarm.entity";
 
 @Injectable()
 export class AppService {
@@ -24,5 +25,13 @@ export class AppService {
             console.log("ALARM ACTIVATED")
         });
         return createdAlarm;
+    }
+
+    async getAllAlarms(): Promise<Alarm[]> {
+        return await this.app.findAll();
+    }
+
+    async deleteAlarm(id: string) {
+        return await this.app.delete(id);
     }
 }

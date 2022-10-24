@@ -10,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model alarm {
+model classicAlarm {
   id    String  @id @default(uuid())
   days Json
   time DateTime
@@ -18,5 +18,17 @@ model alarm {
   isActive Boolean @default(true)
   deviceId String
   name String
+}
+
+model smartAlarm {
+  id String @id @default(uuid())
+  name String
+  createdAt DateTime @default(now())
+  preparationTime Integer
+  alarmLocationLat String
+  alarmLocationLong String
+  destinationLocationLat String
+  destinationLocationLong String
+  deviceId String
 }
 
