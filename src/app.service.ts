@@ -27,8 +27,12 @@ export class AppService {
         return createdAlarm;
     }
 
-    async getAllAlarms(): Promise<Alarm[]> {
-        return await this.app.findAll();
+    async getAllAlarms(deviceId: string): Promise<Alarm[]> {
+        return await this.app.findMany({
+            where: {
+                deviceId
+            }
+        });
     }
 
     async deleteAlarm(id: string) {

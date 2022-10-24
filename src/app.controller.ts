@@ -15,9 +15,9 @@ export class AppController {
     return await this.appService.createAlarm(alarm);
   }
 
-  @Get()
-  async getAllAlarms(): Promise<Alarm[]> {
-    return await this.appService.getAllAlarms();
+  @Get('/:id')
+  async getAllAlarms(@Param("id") deviceId): Promise<Alarm[]> {
+    return await this.appService.getAllAlarms(deviceId);
   }
 
   @Delete('/:id')
