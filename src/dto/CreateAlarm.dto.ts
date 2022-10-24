@@ -15,7 +15,7 @@ export class CreateAlarmDto {
   name: string;
 
   @IsNotEmpty()
-  days: object;
+  days: number[];
 
   @IsNotEmpty()
   deviceId: string;
