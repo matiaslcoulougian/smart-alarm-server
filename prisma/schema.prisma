@@ -24,7 +24,7 @@ model smartAlarm {
   id String @id @default(uuid())
   name String
   createdAt DateTime @default(now())
-  preparationTime Integer
+  preparationTime Int
   alarmLocationLat String
   alarmLocationLong String
   destinationLocationLat String

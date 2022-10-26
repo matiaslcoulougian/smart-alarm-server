@@ -6,6 +6,6 @@ import { DatabaseService } from './shared/service';
 @Injectable()
 export class AppRepository extends BaseRepository<Alarm> {
   constructor(db: DatabaseService) {
-    super(db, 'alarm');
+    super(db, 'classicAlarm');
   }
 }

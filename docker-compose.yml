@@ -1,5 +1,9 @@
 version: '3.8'
 services:
+  api:
+    build: .
+    env_file:
+      - .env
   postgres:
     image: postgres:10.3
     env_file:

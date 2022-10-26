@@ -12,18 +12,18 @@ export class AppService {
     async createAlarm(alarm: CreateAlarmDto): Promise<CreateAlarmResponseDto> {
         alarm.time = new Date(alarm.time);
         const createdAlarm = await this.app.create(alarm);
-        const rule = new RecurrenceRule();
-        rule.dayOfWeek = alarm.days;
-        rule.hour = createdAlarm.time.getHours();
-        rule.minute = createdAlarm.time.getMinutes();
-        const job = scheduleJob(rule, () => {
-            client.publish("alarm", 'BEEP BEEP BEEP', { qos: 0, retain: false }, (error) => {
-                if (error) {
-                    console.error(error)
-                }
-            })
-            console.log("ALARM ACTIVATED")
-        });
+        // const rule = new RecurrenceRule();
+        // rule.dayOfWeek = alarm.days;
+        // rule.hour = createdAlarm.time.getHours();
+        // rule.minute = createdAlarm.time.getMinutes();
+        // const job = scheduleJob(rule, () => {
+        //     client.publish("alarm", 'BEEP BEEP BEEP', { qos: 0, retain: false }, (error) => {
+        //         if (error) {
+        //             console.error(error)
+        //         }
+        //     })
+        //     console.log("ALARM ACTIVATED")
+        // });
         return createdAlarm;
     }
 
